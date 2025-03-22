@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #fff;
+}
+
+.main-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    padding-top: 5.4rem;
+}
+
+.main-title {
+    font-family: "Oswald", sans-serif;
+    justify-self: center;
+    font-size: 4.8rem;
+    margin-top: 3.6rem;
+    letter-spacing: 1px;
+}
+
+/* Exercise Section */
+
+.exercise-search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: #2C2C2C;
+    margin-bottom: 3.6rem;
+}
+
+.search-input {
+    width: auto;
+    min-width: 25rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    background-color: #2C2C2C;
+    color: #CCCCCC;
+    font-size: 1.2rem;
+    margin-left: 0.4rem;
+}
+
+.search-icon-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #8f8f8f;
+}
+
+.search-icon-button:hover {
+    color: #cccccc;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.exercise-result-box {
+    border-radius: 8px;
+    background-color: #2C2C2C;
+    width: 40rem;
+    height: 40rem;
+}
+
+/* Workout Section */
+
+.workout-section {
+    border-radius: 8px;
+    background-color: #2C2C2C;
+    width: 48rem;
+    height: 55rem;
+}
+
+.workout-section form {
+    display: flex;
+    justify-content: center;
+}
+
+.workout-name-header {
+    margin-top: 1.2rem;
+    width: auto;
+    min-width: 30rem;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 0.8rem;
+    outline: none;
+    background: transparent;
+    background-color: #1F1F1F;
+    color: #CCCCCC;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
