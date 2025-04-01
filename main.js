@@ -1,9 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import axios from "axios";
-import session from "express-session";
-import flash from "express-flash"
-;
 
 const app = express();
 const port = 3000;
