@@ -26,11 +26,15 @@
     <main>
         <div class="main-section">
             <section class="exercise-search-section">
-                <form>
+                <div id="error-message" class="error-box hidden">
+                    <span class="error-text">We couldn't find that muscle group. Try something like 'abs', 'arms', or 'legs'.</span>
+                    <button id="close-error">✖</button>
+                  </div>
+                <form id="exercise-search" action="/search" method="post">
                     <div class="search-box">
                         <label for="search"></label>
-                        <input type="text" id="search" class="search-input" placeholder="Search a muscle you want to work on">
-                        <button class="search-icon-button">                                <span class="material-symbols-outlined search-icon">
+                        <input type="text" id="search" name="searchExercise" class="search-input" autocomplete="off" placeholder="Search a muscle you want to work on">
+                        <button type="submit" class="search-icon-button"><span class="material-symbols-outlined search-icon">
                                     search
                             </span>
                         </button>
@@ -38,6 +42,10 @@
                 </form>
                 <div class="exercise-result-box">
                     <h2>Exercises will appear here.</h2>
+                    <div class="available-exercise-section">
+                        <p class="e-result-text">Search an available exercise from the list below:</p>
+                        <p class="e-result-text">Abs, Arms, Back, Calves, Cardio, Chest, Legs, Shoulders</p>
+                    </div>
                 </div>
             </section>
             <section class="workout-section">            
@@ -48,6 +56,6 @@
             </section>
         </div>
     </main>
-    
+    <script src="/scripts/script.js"></script>
 </body>
 </html>
