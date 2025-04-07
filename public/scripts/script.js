@@ -34,5 +34,18 @@ function handleSearchSubmit(event) {
     event.target.submit();
 }
 
+// Close error message when clicking the X
 document.getElementById("close-error").addEventListener("click", function () {hideElement(document.querySelector(".error-box"))});
+
+
+// Handle server-side errors when page loads
+document.addEventListener("DOMContentLoaded", function() {
+    // If there's a server-side error message displayed, set up the close button
+    const errorBox = document.querySelector(".error-box:not(.hidden)");
+    if (errorBox) {
+        document.getElementById("close-error").addEventListener("click", function() {
+            hideElement(errorBox);
+        });
+    }
+});
 
