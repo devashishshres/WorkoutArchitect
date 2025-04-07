@@ -26,14 +26,14 @@
     <main>
         <div class="main-section">
             <section class="exercise-search-section">
-                <div id="error-message" class="error-box hidden">
-                    <span class="error-text">We couldn't find that muscle group. Try something like 'abs', 'arms', or 'legs'.</span>
+                <div id="error-message" class="error-box <%= errorMessage ? '' : 'hidden' %>">
+                    <span class="error-text"><%= errorMessage || "We couldn't find that muscle group. Try something like 'abs', 'arms', or 'legs'." %></span>
                     <button id="close-error">✖</button>
                   </div>
                 <form id="exercise-search" action="/search" method="post">
                     <div class="search-box">
                         <label for="search"></label>
-                        <input type="text" id="search" name="searchExercise" class="search-input" autocomplete="off" placeholder="Search a muscle you want to work on">
+                        <input type="text" id="search" name="searchExercise" class="search-input" autocomplete="off" placeholder="Search a muscle you want to work on" value="<%= previousInput || '' %>">
                         <button type="submit" class="search-icon-button"><span class="material-symbols-outlined search-icon">
                                     search
                             </span>
