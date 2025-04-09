@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
     });
 });
 
+
 app.post("/search", async(req,res) => {
     console.log("req.body:", req.body);
 
@@ -44,38 +45,51 @@ app.post("/search", async(req,res) => {
         
     }
 
+    const muscleID = muscleIds[userInput];
+
+    const userInfo = {
+        username: process.env.API_USERNAME,
+        password: process.env.API_PASSWORD
+    };
+
+    // Add API_USERNAME, API_PASSWORD, refresh and access api keys
     try {
-        const muscleID = muscleIds[userInput];
-    } catch (error) {
-        console.error("Server Error:", error);
-        return res.render("index.ejs", {
-        errorMessage: "An unexpected error occurred. Please try again.",
-        previousInput: req.body.searchExercise
-    });
-    }
-        
-        /*
-        const muscleID = muscleIds[userInput.toLowerCase()];
-        const userInfo = {
-            username: process.env.API_USERNAME,
-            password: process.env.API_PASSWORD
-        };
-        // Add API_USERNAME, API_PASSWORD, refresh and access api keys
-        try {
-            const resultTokens = await axios.post(API_URL + "/token", userInfo);
-            const accessToken = resultTokens.data.access;
-            const config = {
-                headers: { Authorization: `Bearer ${accessToken}` }};
+        const resultTokens = await axios.post(API_URL + "token", userInfo);
+        const accessToken = resultTokens.data.access;
+        const config = {
+            headers: { Authorization: `Bearer ${accessToken}` }};
 
-            const result = await axios.get(API_URL + "/exerciseinfo?category=" + muscleID, config);
+        const result = await axios.get(API_URL + "exerciseinfo?category=" + muscleID, config);
+        const fetchedResults = result.data.results;
 
+        const exerciseList = [];
 
-        } catch (error){
-
+        for (const element of fetchedResults) {
+            for (const translation of element.translations) {
+                if (translation.language === 2) {
+                    const exercise = translation.name;
+                    exerciseList.push(exercise);
+                }
+            }
         }
 
-        */
-    
+        const shuffledList = exerciseList.sort(() => 0.5 - Math.random());
+        const randomizedExerciseList = shuffledList.slice(0,5);
+
+        console.log(randomizedExerciseList);
+
+        res.render("index.ejs", {
+            errorMessage: null,
+            previousInput: null,
+        });
+
+    } catch (error){
+        console.error("Server Error:", error);
+        res.render("index.ejs", {
+        errorMessage: "An unexpected error occurred. Please try again.",
+        previousInput: req.body.searchExercise
+        });
+    }
 });
 
 app.listen(port, () => {
