@@ -146,6 +146,61 @@ body {
     align-items: center;
 }
 
+.exercise-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2.2rem;
+    height: 100%;
+}
+
+.exercise-card p {
+    background-color: #1F1F1F;
+    min-width: 28rem;
+    font-size: 1.4rem;
+    color: #cccccc;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.exercise-card:first-child {
+    margin-top: 1.6rem;
+}
+
+.exercise-card:last-child {
+    margin-bottom: none;
+}
+
+#add-exercise-btn{
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    background-color: #006400;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#add-exercise-btn:hover {
+    background-color: #005000;
+} 
+
+.add-inst-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.4rem;
+}
+
+.add-instructions {
+    font-size: 1.2rem;
+    padding: 1.2rem;
+}
+
+
 /* Workout Section */
 
 .workout-section {
