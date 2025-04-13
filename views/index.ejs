@@ -41,11 +41,24 @@
                     </div>
                 </form>
                 <div class="exercise-result-box">
-                    <h2>Exercises will appear here.</h2>
-                    <div class="available-exercise-section">
-                        <p class="e-result-text">Search an available exercise from the list below:</p>
-                        <p class="e-result-text">Abs, Arms, Back, Calves, Cardio, Chest, Legs, Shoulders</p>
-                    </div>
+                    <% if (!randomizedExerciseList || randomizedExerciseList.length === 0) { %>
+                        <h2>Exercises will appear here.</h2>
+                        <div class="available-exercise-section">
+                            <p class="e-result-text">Search an available exercise from the list below:</p>
+                            <p class="e-result-text">Abs, Arms, Back, Calves, Cardio, Chest, Legs, Shoulders</p>
+                        </div>
+                    <% } else { %>
+                            <% randomizedExerciseList.forEach(function(exercise) { %>
+                                <div class="exercise-card">
+                                    <p><%= exercise%></p>
+                                    <button type="submit" id="add-exercise-btn"><img src="/images/plus_icon.svg" class="plus-img" alt="plus icon">
+                                    </button>
+                                </div>
+                            <% }); %>
+                            <div class="add-inst-box">
+                                <p class="add-instructions">Click on the add button to add your exercise to the workout section.</p>
+                            </div>
+                    <% } %>
                 </div>
             </section>
             <section class="workout-section">            
