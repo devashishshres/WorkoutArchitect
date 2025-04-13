@@ -26,10 +26,16 @@ const muscleIds = {
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {
+        randomizedExerciseList: null,
         errorMessage: null,
         previousInput: null,
     });
 });
+
+
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
 
 
 app.post("/search", async(req,res) => {
@@ -68,7 +74,8 @@ app.post("/search", async(req,res) => {
             for (const translation of element.translations) {
                 if (translation.language === 2) {
                     const exercise = translation.name;
-                    exerciseList.push(exercise);
+                    const formattedName = exercise.toLowerCase().split(" ").map(word => capitalizeFirstLetter(word)).join(" ");
+                    exerciseList.push(formattedName);
                 }
             }
         }
@@ -79,6 +86,7 @@ app.post("/search", async(req,res) => {
         console.log(randomizedExerciseList);
 
         res.render("index.ejs", {
+            randomizedExerciseList,
             errorMessage: null,
             previousInput: null,
         });
