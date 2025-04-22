@@ -39,13 +39,11 @@ function capitalizeFirstLetter(word) {
 
 
 app.post("/search", async(req,res) => {
-    console.log("req.body:", req.body);
-
     const userInput = req.body.searchExercise ? req.body.searchExercise.trim().toLowerCase() : "";
     
     if (!userInput || !(userInput in muscleIds)) {
         return res.render("index.ejs", {
-            errorMessage: "We couldn't find that muscle group. Try something like 'abs', 'arms', or 'legs'",
+            errorMessage: "We couldn't find that muscle group. Try something like 'abs', 'arms', 'legs', etc.",
             previousInput: req.body.searchExercise
         });
         
@@ -99,6 +97,10 @@ app.post("/search", async(req,res) => {
         });
     }
 });
+
+app.post("/download", async(req,res) => {
+    return res.sendStatus(200);
+})
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
