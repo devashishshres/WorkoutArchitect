@@ -49,3 +49,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+
+// Prevent user from going to download endpoint after pressing enter
+document.getElementById("workout-name")
+    .addEventListener("keydown", e => {
+    if (e.key === "Enter") e.preventDefault();
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const workoutForm = document.getElementById("workout-header");
+    const workoutNameInput = document.getElementById("workout-name");
+    
+    // Add the invalid class on form invalid attempt
+    workoutForm.addEventListener("invalid", function(event) {
+        // Add submit-attempted class when browser detects invalid input
+        workoutForm.classList.add("submit-attempted");
+    }, true); 
+    
+    // Add specific handler for the download button
+    const downloadButton = workoutForm.querySelector("button[type='submit']");
+    downloadButton.addEventListener("click", function(event) {
+        // Add submit-attempted class when download button is clicked
+        workoutForm.classList.add("submit-attempted");
+    });
+
+    // Clear the submit-attempted class when user starts typing again
+    workoutNameInput.addEventListener("input", function() {
+        workoutForm.classList.remove("submit-attempted");
+    });
+});
