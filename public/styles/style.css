@@ -35,6 +35,13 @@ body {
     display: none;
 }
 
+.info-hd-style {
+    font-size: 2.4rem;
+    font-weight: 400;
+    align-self: center;
+    margin-bottom: 1.8rem;
+}
+
 /* Exercise Section */
 
 #error-message {
@@ -129,15 +136,8 @@ body {
     height: 40rem;
 }
 
-.exercise-result-box h2{
-    font-size: 2.4rem;
-    font-weight: 400;
-    align-self: center;
-    margin-bottom: 1.8rem;
-}
-
 .e-result-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .available-exercise-section {
@@ -202,7 +202,6 @@ body {
 
 
 /* Workout Section */
-
 .workout-section {
     border-radius: 8px;
     background-color: #2C2C2C;
@@ -210,9 +209,21 @@ body {
     height: 55rem;
 }
 
-.workout-section form {
+.workout-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+#workout-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;            
+    height: 100%;                   
+    max-width: 400px;               
+    width: 100%;                    
 }
 
 .workout-name-header {
@@ -229,4 +240,58 @@ body {
     color: #CCCCCC;
     font-size: 2.4rem;
     font-weight: 600;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+.workout-name-header:focus:valid {
+    outline: none;                 
+    border-color: #4a944a;               
+    box-shadow: 0 0 6px rgba(74, 148, 74, 0.6);
+}
+
+.submit-attempted .workout-name-header:invalid {
+    outline: none;
+    border-color: #d93025;
+    box-shadow: 0 0 6px rgba(217, 48, 37, 0.6);
+}
+
+.workout-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #8f8f8f;
+    text-align: center;
+}
+
+.wk-if-hd2 {
+    font-size: 1.2rem;
+}
+
+.download-btn {
+    background-color: #1a741a;
+    font-size: 1.2rem;  
+    color: #ffffff;              
+    font-weight: bold;          
+    text-transform: uppercase;  
+    letter-spacing: 0.025em;     
+    padding: 1rem 2rem;      
+    border: none;               
+    border-radius: 5px;                 
+    cursor: pointer;             
+    transition: background-color 0.2s ease; 
+    width: 100%;                 
+    max-width: 320px;
+    margin-bottom: 1.2rem;           
+}
+  
+.download-btn:hover {
+    background-color: #155d15;  
+}
+  
+.download-btn:disabled {
+    background-color: #666666; 
+    cursor: not-allowed;
+}
+
