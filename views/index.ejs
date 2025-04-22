@@ -27,7 +27,7 @@
         <div class="main-section">
             <section class="exercise-search-section">
                 <div id="error-message" class="error-box <%= errorMessage ? '' : 'hidden' %>">
-                    <span class="error-text"><%= errorMessage || "We couldn't find that muscle group. Try something like 'abs', 'arms', or 'legs'." %></span>
+                    <span class="error-text"><%= errorMessage || "We couldn't find that muscle group. Try something like 'abs', 'arms', 'legs'." %></span>
                     <button id="close-error">✖</button>
                   </div>
                 <form id="exercise-search" action="/search" method="post">
@@ -42,7 +42,7 @@
                 </form>
                 <div class="exercise-result-box">
                     <% if (!randomizedExerciseList || randomizedExerciseList.length === 0) { %>
-                        <h2>Exercises will appear here.</h2>
+                        <h2 class="info-hd-style">Exercises will appear here.</h2>
                         <div class="available-exercise-section">
                             <p class="e-result-text">Search an available exercise from the list below:</p>
                             <p class="e-result-text">Abs, Arms, Back, Calves, Cardio, Chest, Legs, Shoulders</p>
@@ -61,11 +61,21 @@
                     <% } %>
                 </div>
             </section>
-            <section class="workout-section">            
-                <form>
-                    <label for="workout-name"></label>
-                    <input type="text" id="workout-name" class="workout-name-header" placeholder="Enter your workout name">
-                </form>
+            <section class="workout-section">
+                <div id="error-message" class="error-box hidden">
+                    <span class="error-text"><%= errorMessage%></span>
+                    <button id="close-error">✖</button>
+                  </div>
+                <form id="workout-header" action="/download" method="post">
+                    <input type="text" id="workout-name" class="workout-name-header" name="workoutName" placeholder="Enter your workout name" required minlength="3" maxlength="100" pattern="[a-zA-Z0-9_\- ]+" autocomplete="off" title="Only letters, numbers, spaces, dashes and underscores allowed.">
+                    <div class="workout-box">
+                        <h2 class="info-hd-style">Exercises you add will appear here.</h2>
+                        <h2 class="info-hd-style wk-if-hd2">You can create your own workout and download it as a PDF!</h2>
+                    </div>
+                    <button type="submit" class="download-btn">
+                        Download PDF
+                    </button>
+                </form>                            
             </section>
         </div>
     </main>
